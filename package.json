@@ -4,6 +4,7 @@
   "description": "Service that allows you to send an email anonymously.",
   "main": "main.ts",
   "dependencies": {
+    "dotenv": "^9.0.2",
     "fastify": "^3.15.1",
     "mongoose": "^5.12.7",
     "pino": "^6.11.3",

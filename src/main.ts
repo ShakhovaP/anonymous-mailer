@@ -1,5 +1,9 @@
 import fastify from 'fastify';
 import pino from 'pino';
+import dotenv from 'dotenv';
+import { mailerService } from './modules/mailer/mailer.service';
+
+dotenv.config();
 
 const logger = pino({
   prettyPrint: {
@@ -12,7 +16,7 @@ const logger = pino({
 });
 
 const server = fastify({ logger });
-const port = 8080;
+const port = +process.env.PORT || 8080;
 
 const bootStrap = async () => {
   try {
