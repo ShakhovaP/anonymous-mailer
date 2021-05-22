@@ -2,19 +2,11 @@ import fastify from 'fastify';
 import pino from 'pino';
 import dotenv from 'dotenv';
 import { mailerService } from './modules/mailer/mailer.service';
+import { pinoConfig } from './config/pino.config';
 
 dotenv.config();
 
-const logger = pino({
-  prettyPrint: {
-    colorize: true,
-    levelFirst: true,
-    translateTime: true,
-  },
-  timestamp: () => `time:${new Date()}`,
-  level: 'info',
-});
-
+const logger = pino(pinoConfig);
 const server = fastify({ logger });
 const port = +process.env.PORT || 8080;
 

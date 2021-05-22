@@ -1,5 +1,5 @@
 import { ReturnI } from '../../../interfaces/return.interface';
-import { EmailOptionsI } from '../interfaces/emailOptions.interface';
+import { EmailOptionsI } from '../../email/interfaces/emailOptions.interface';
 import { EmailProviderI } from '../interfaces/provider.interface';
 
 export class NodemailerProvider implements EmailProviderI {
