@@ -14,13 +14,13 @@ const port = +process.env.PORT || 8080;
 mailerRoutes.forEach((route) => {
   switch (route.method) {
     case 'GET':
-      server.get(route.url, route.handler);
+      server.get(route.url, { schema: route.schema }, route.handler);
       break;
     case 'POST':
-      server.post(route.url, route.handler);
+      server.post(route.url, { schema: route.schema }, route.handler);
       break;
     case 'DELETE':
-      server.delete(route.url, route.handler);
+      server.delete(route.url, { schema: route.schema }, route.handler);
       break;
   }
 });

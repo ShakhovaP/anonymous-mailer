@@ -1,35 +1,35 @@
-import { ReturnI } from '../../interfaces/return.interface';
+import { ServiceReturnI } from '../../interfaces/return.interface';
+import { emailService } from '../email/email.service';
 import { EmailOptionsI } from '../email/interfaces/emailOptions.interface';
-import { EmailProviderI } from './interfaces/provider.interface';
-import { NodemailerProvider } from './providers/nodemailer.provider';
 
 class MailerService {
-  private _provider: EmailProviderI;
-
-  constructor(provider: EmailProviderI) {
-    this._provider = provider;
+  async sendEmail(data: EmailOptionsI): Promise<ServiceReturnI> {
+    try {
+      // TODO: implement
+      await emailService.send(data);
+      return { result: 'Success' };
+    } catch (e) {
+      return { result: 'Error', error: e.message };
+    }
   }
 
-  get getProvider(): EmailProviderI {
-    return this._provider;
+  async getEmail(id: string): Promise<ServiceReturnI> {
+    try {
+      // TODO: implement
+      return { result: 'Success' };
+    } catch (e) {
+      return { result: 'Error', error: e.message };
+    }
   }
 
-  set setProvider(provider: EmailProviderI) {
-    this._provider = provider;
-  }
-
-  async send(options: EmailOptionsI): Promise<ReturnI> {
-    await this._provider.send(options);
-    return { message: 'Success' };
-  }
-
-  async getEmail(id: string) {
-    // TODO: implement
-  }
-
-  async deleteEmail(id: string) {
-    // TODO: implement
+  async deleteEmail(id: string): Promise<ServiceReturnI> {
+    try {
+      // TODO: implement
+      return { result: 'Success' };
+    } catch (e) {
+      return { result: 'Error', error: e.message };
+    }
   }
 }
 
-export const mailerService = new MailerService(new NodemailerProvider());
+export const mailerService = new MailerService();
