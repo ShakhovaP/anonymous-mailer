@@ -1,7 +1,7 @@
 import { ServiceReturnI } from '../../interfaces/return.interface';
-import { EmailI } from './email.model';
-import { EmailProviderI } from './interfaces/provider.interface';
-import { NodemailerProvider } from './providers/nodemailer.provider';
+import { EmailProviderI } from '../mailer/interfaces/provider.interface';
+import { NodemailerProvider } from '../mailer/providers/nodemailer.provider';
+import { EmailOptionsI } from './interfaces/emailOptions.interface';
 
 class EmailService {
   private _provider: EmailProviderI;
@@ -18,7 +18,7 @@ class EmailService {
     this._provider = provider;
   }
 
-  async send(options: EmailI): Promise<ServiceReturnI> {
+  async send(options: EmailOptionsI): Promise<ServiceReturnI> {
     try {
       await this._provider.send(options);
       return { result: 'Success' };
