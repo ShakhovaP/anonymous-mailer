@@ -32,4 +32,27 @@ class MailerService {
   }
 }
 
-export const mailerService = new MailerService();
+export const mailerService = new MailerService(new NodemailerProvider());
+const defaultProvider = new NodemailerProvider();
+
+class MailerService {
+  private provider: EmailProviderI;
+
+  constructor() {
+    this.provider = defaultProvider;
+  }
+
+  get getProvider(): EmailProviderI {
+    return this.provider;
+  }
+
+  set setProvider(provider: EmailProviderI) {
+    this.provider = provider;
+  }
+
+  async send(options: EmailOptionsI): Promise<ReturnI> {
+    await this.provider.send(options);
+    return { message: 'Success' };
+  }
+}
+
