@@ -1,0 +1,7 @@
+name: anonymous-mailer
+on: [push]
+jobs:
+  start-anonymous-mailer:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run start
