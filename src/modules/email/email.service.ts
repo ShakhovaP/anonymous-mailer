@@ -19,12 +19,8 @@ class EmailService {
   }
 
   async send(options: EmailOptionsI): Promise<ServiceReturnI> {
-    try {
-      await this._provider.send(options);
-      return { result: 'Success' };
-    } catch (e) {
-      return { result: 'Error', error: e.message };
-    }
+    await this._provider.send(options);
+    return { result: 'Success' };
   }
 }
 

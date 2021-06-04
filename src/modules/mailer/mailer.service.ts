@@ -1,4 +1,5 @@
 import { ServiceReturnI } from '../../interfaces/return.interface';
+import { EmailI } from '../email/email.model';
 import { emailRepository } from '../email/email.repository';
 import { emailService } from '../email/email.service';
 import { EmailOptionsI } from '../email/interfaces/emailOptions.interface';
@@ -7,6 +8,7 @@ class MailerService {
   async sendEmail(options: EmailOptionsI): Promise<ServiceReturnI> {
     try {
       await emailService.send(options);
+      await emailRepository.createEmail(options as EmailI)
       return { result: 'Success' };
     } catch (e) {
       return { result: 'Error', error: e.message };
