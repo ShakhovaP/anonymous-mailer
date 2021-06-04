@@ -1,6 +1,6 @@
 # anonymous-mailer
 
-Service that allows you to send an email anonymously.
+Server side of service that allows you to send an email anonymously.
 
 ### Thanks to our contributors!
 
