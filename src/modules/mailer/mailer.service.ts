@@ -1,12 +1,12 @@
 import { ServiceReturnI } from '../../interfaces/return.interface';
+import { emailRepository } from '../email/email.repository';
 import { emailService } from '../email/email.service';
 import { EmailOptionsI } from '../email/interfaces/emailOptions.interface';
 
 class MailerService {
-  async sendEmail(data: EmailOptionsI): Promise<ServiceReturnI> {
+  async sendEmail(options: EmailOptionsI): Promise<ServiceReturnI> {
     try {
-      // TODO: implement
-      await emailService.send(data);
+      await emailService.send(options);
       return { result: 'Success' };
     } catch (e) {
       return { result: 'Error', error: e.message };
@@ -15,7 +15,7 @@ class MailerService {
 
   async getEmail(id: string): Promise<ServiceReturnI> {
     try {
-      // TODO: implement
+      await emailRepository.findEmailById(id);
       return { result: 'Success' };
     } catch (e) {
       return { result: 'Error', error: e.message };
@@ -24,7 +24,7 @@ class MailerService {
 
   async deleteEmail(id: string): Promise<ServiceReturnI> {
     try {
-      // TODO: implement
+      await emailRepository.deleteEmailById(id);
       return { result: 'Success' };
     } catch (e) {
       return { result: 'Error', error: e.message };

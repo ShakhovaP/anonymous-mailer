@@ -1,6 +1,6 @@
 import { ServiceReturnI } from '../../interfaces/return.interface';
-import { EmailProviderI } from '../mailer/interfaces/provider.interface';
-import { NodemailerProvider } from '../mailer/providers/nodemailer.provider';
+import { EmailProviderI } from './interfaces/provider.interface';
+import { NodemailerProvider } from './providers/nodemailer.provider';
 import { EmailOptionsI } from './interfaces/emailOptions.interface';
 
 class EmailService {

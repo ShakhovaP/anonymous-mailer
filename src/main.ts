@@ -4,12 +4,14 @@ import dotenv from 'dotenv';
 import { mailerService } from './modules/mailer/mailer.service';
 import { pinoConfig } from './config/pino.config';
 import { mailerRoutes } from './modules/mailer/mailer.routes';
+import mongoose from 'mongoose';
 
 dotenv.config();
 
 const logger = pino(pinoConfig);
 const server = fastify({ logger });
 const port = +process.env.PORT || 8080;
+server.register(require('fastify-formbody'));
 
 mailerRoutes.forEach((route) => {
   switch (route.method) {
@@ -28,6 +30,10 @@ mailerRoutes.forEach((route) => {
 const bootStrap = async () => {
   try {
     await server.listen(port);
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (e) {
     server.log.error(e);
     process.exit(1);

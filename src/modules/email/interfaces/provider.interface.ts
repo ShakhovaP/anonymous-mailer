@@ -1,5 +1,5 @@
-import { EmailI } from '../email.model';
+import { EmailOptionsI } from './emailOptions.interface';
 
 export interface EmailProviderI {
-  send(options: EmailI): Promise<object>;
+  send(options: EmailOptionsI): Promise<object>;
 }
